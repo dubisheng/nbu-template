@@ -1,0 +1,72 @@
+\ProvidesPackage{beamerthemeNBU}[2013/11/19]
+\def\beamerNBU@version{1.0}
+
+% Copyright 2003      by Till Tantau  <tantau@users.sourceforge.net>
+%       and 2005-2006 by Jorg Cassens <jmt@cassens.org>
+%       and 2008-2012 by QU Xiaofeng  <quxiaofeng.at.polyu@gmail.com>
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+\ifx\beamer@version\beamerNBU@version
+\else
+  \PackageWarningNoLine{beamerthemeNBU}{This version of beamerthemeNBU (\beamerNBU@version ) might not work with detected beamer class \beamer@version}
+\fi
+
+\mode<presentation>
+
+\newif\ifbeamer@minimal
+\newif\ifbeamer@nonav
+\newif\ifbeamer@red
+\newif\ifbeamer@gold
+\newif\ifbeamer@numbers
+\newif\ifbeamer@shadow
+\newif\ifbeamer@nologo
+\newif\ifbeamer@NBU
+
+\beamer@minimalfalse
+\beamer@nonavfalse
+\beamer@redtrue
+\beamer@goldfalse
+\beamer@numbersfalse
+\beamer@shadowtrue
+\beamer@nologotrue
+\beamer@NBUfalse
+
+\DeclareOptionBeamer{compress}{\beamer@compresstrue}
+\DeclareOptionBeamer{minimal}{\beamer@minimaltrue}
+\DeclareOptionBeamer{nonav}{\beamer@nonavtrue}
+\DeclareOptionBeamer{red}{\beamer@redtrue}
+\DeclareOptionBeamer{gold}{\beamer@goldtrue}
+\DeclareOptionBeamer{numbers}{\beamer@numberstrue}
+\DeclareOptionBeamer{noshadow}{\beamer@shadowfalse}
+\DeclareOptionBeamer{nologo}{\beamer@nologofalse}
+\DeclareOptionBeamer{NBU}{\beamer@NBUtrue}
+
+\ProcessOptionsBeamer
+
+\ifbeamer@shadow
+  \useinnertheme[shadow=true]{rounded}
+\else
+  \useinnertheme{rounded}
+\fi
+\useoutertheme{NBU}
+
+\ifbeamer@red
+  \usecolortheme{NBUred}
+  \setbeamercolor{normal text}{fg=black,bg=white!95!NBUred}
+\fi
+
+\ifbeamer@gold
+  \usecolortheme{NBUgold}
+  \setbeamercolor{normal text}{fg=black,bg=white!95!NBUgold}
+\fi
+
+\ifbeamer@nonav
+  \setbeamertemplate{navigation symbols}{}  % Removes navigation symbols.
+\fi
+
+\setbeamerfont{block title}{size={}}
+
+\mode
+<all>
